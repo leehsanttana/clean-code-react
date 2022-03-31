@@ -12,18 +12,6 @@ body {
   background-color: $background;
 }
 
-input[type="password"],
-input[type="email"] {
-  border: 1px solid $primaryLight;
-  line-height: 40px;
-  border-radius: 4px;
-  padding: 0.5rem;
-
-  &:focus {
-    outline-color: $primaryLight;
-  }
-}
-
 button {
   line-height: 60px;
   background-color: $primary;
@@ -62,24 +50,6 @@ button {
       font-size: 20px;
       text-transform: uppercase;
       letter-spacing: 0.025rem;
-    }
-
-    .inputWrap {
-      margin-top: 16px;
-      display: flex;
-      align-items: center;
-      position: relative;
-
-      input {
-        flex-grow: 1;
-      }
-
-      .status {
-        position: absolute;
-        right: 0.5rem;
-        font-size: 8px;
-        cursor: help;
-      }
     }
 
     button {
