@@ -1,31 +1,5 @@
 @import "../../styles/colors.scss";
 
-* {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: $background;
-}
-
-button {
-  line-height: 60px;
-  background-color: $primary;
-  color: $white;
-  border-radius: 8px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    opacity: 0.9;
-  }
-}
-
 .login {
   display: flex;
   flex-direction: column;
