@@ -55,7 +55,6 @@ describe("Login Component", () => {
 
   test("Should show passowrd error if Validation fails", () => {
     const { sut, validationStub } = makeSut();
-
     const passwordInput = sut.getByTestId("password");
     fireEvent.input(passwordInput, {
       target: { value: faker.internet.password() },
@@ -65,23 +64,17 @@ describe("Login Component", () => {
     expect(passwordStatus.textContent).toBe("🔴");
   });
 
-  //code test to check if email and password are valid
+  test("Should show valid email state if Validation succeeds", () => {
+    const { sut, validationStub } = makeSut();
+    validationStub.errorMessage = null;
+    const emailInput = sut.getByTestId("email");
+    fireEvent.input(emailInput, {
+      target: { value: faker.internet.email() },
+    });
+    const emailStatus = sut.getByTestId("email-status");
+    expect(emailStatus.title).toBe("Tudo certo!");
+    expect(emailStatus.textContent).toBe("🟢");
+  });
 
-  // test("Should call Validation with correct email", () => {
-  //   const { sut, validationStub } = makeSut();
-  //   const emailInput = sut.getByTestId("email");
-  //   const email = faker.internet.email();
-  //   fireEvent.input(emailInput, { target: { value: email } });
-  //   expect(validationStub.fieldName).toBe("email");
-  //   expect(validationStub.fieldValue).toBe(email);
-  // });
-
-  // test("Should call Validation with correct password", () => {
-  //   const { sut, validationStub } = makeSut();
-  //   const passwordInput = sut.getByTestId("password");
-  //   const password = faker.internet.password();
-  //   fireEvent.input(passwordInput, { target: { value: password } });
-  //   expect(validationStub.fieldName).toBe("password");
-  //   expect(validationStub.fieldValue).toBe(password);
-  // });
+  //test failed when I use the same validation stub with password
 });
