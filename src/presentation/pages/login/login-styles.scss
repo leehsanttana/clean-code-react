@@ -28,6 +28,15 @@
 
     button {
       margin-top: 1rem;
+
+      &:disabled {
+        background-color: $disabled;
+        cursor: not-allowed;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
 
     .link {
