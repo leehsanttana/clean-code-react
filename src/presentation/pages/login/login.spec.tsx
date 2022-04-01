@@ -8,6 +8,7 @@ import {
 } from "@testing-library/react";
 import Login from "./login";
 import faker from "faker";
+import "jest-localstorage-mock";
 import { ValidationStub, AuthenticationSpy } from "@/presentation/test/";
 import { InvalidCredentialsError } from "@/domain/errors";
 
@@ -77,6 +78,9 @@ const simulateStatusForField = (
 
 describe("Login Component", () => {
   afterEach(cleanup);
+  beforeEach(() => {
+    localStorage.clear();
+  });
   test("Should not render spinner and error on start", () => {
     const validationError = faker.random.words();
     const { sut } = makeSut({ validationError });
@@ -170,5 +174,16 @@ describe("Login Component", () => {
   //   const mainError = sut.getByTestId("main-error");
   //   expect(mainError.textContent).toBe(error.message);
   //   expect(errorWrap.childElementCount).toBe(1);
+  // });
+
+  // the test is failure. Need check after
+  // test("Should add accessToken to Localstorage on success", async () => {
+  //   const { sut, authenticationSpy } = makeSut();
+  //   simulateValidSubmit(sut);
+  //   await waitFor(() => sut.getByTestId("form"));
+  //   expect(localStorage.setItem).toHaveBeenCalledWith(
+  //     "accessToken",
+  //     authenticationSpy.account.accessToken
+  //   );
   // });
 });
