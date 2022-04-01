@@ -10,7 +10,7 @@ import StateProps from "@/presentation/context/form/form-context";
 import { Validation } from "@/presentation/protocols/validation";
 
 type Props = {
-  validation: Validation;
+  validation?: Validation;
 };
 
 const Login: React.FC<Props> = ({ validation }: Props) => {
