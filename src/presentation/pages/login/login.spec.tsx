@@ -20,7 +20,6 @@ type SutTypes = {
 type SutParams = {
   validationError: string;
 };
-
 const makeSut = (params?: SutParams): SutTypes => {
   const validationStub = new ValidationStub();
   const authenticationSpy = new AuthenticationSpy();
@@ -161,29 +160,36 @@ describe("Login Component", () => {
     expect(authenticationSpy.callsCount).toBe(0);
   });
 
-  // the test is failure. Need check after
-  // test("Should present error if Authentication fails", async () => {
-  //   const { sut, authenticationSpy } = makeSut();
-  //   const error = new InvalidCredentialsError();
-  //   jest
-  //     .spyOn(authenticationSpy, "auth")
-  //     .mockReturnValueOnce(Promise.reject(error));
-  //   simulateValidSubmit(sut);
-  //   const errorWrap = sut.getByTestId("error-wrap");
-  //   await waitFor(() => errorWrap);
-  //   const mainError = sut.getByTestId("main-error");
-  //   expect(mainError.textContent).toBe(error.message);
-  //   expect(errorWrap.childElementCount).toBe(1);
-  // });
+  test("Should present error if Authentication fails", async () => {
+    const { sut, authenticationSpy } = makeSut();
+    const error = new InvalidCredentialsError();
+    jest
+      .spyOn(authenticationSpy, "auth")
+      .mockReturnValueOnce(Promise.reject(error));
+    simulateValidSubmit(sut);
+    const errorWrap = sut.getByTestId("error-wrap");
+    await waitFor(() => {
+      const mainError = sut.getByTestId("main-error");
+      expect(mainError.textContent).toBe(error.message);
+    });
+    expect(errorWrap.childElementCount).toBe(1);
+  });
 
   // the test is failure. Need check after
-  // test("Should add accessToken to Localstorage on success", async () => {
-  //   const { sut, authenticationSpy } = makeSut();
-  //   simulateValidSubmit(sut);
-  //   await waitFor(() => sut.getByTestId("form"));
-  //   expect(localStorage.setItem).toHaveBeenCalledWith(
-  //     "accessToken",
-  //     authenticationSpy.account.accessToken
-  //   );
+  test("Should add accessToken to Localstorage on success", async () => {
+    const { sut, authenticationSpy } = makeSut();
+    simulateValidSubmit(sut);
+    await waitFor(() => {
+      expect(localStorage.setItem).toHaveBeenCalledWith(
+        "accessToken",
+        authenticationSpy.account.accessToken
+      );
+    });
+  });
+
+  // test("Should go to signup page", () => {
+  //   const { sut } = makeSut();
+  //   const register = sut.getByTestId("register");
+  //   fireEvent.click(register);
   // });
 });
