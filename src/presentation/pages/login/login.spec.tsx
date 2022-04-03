@@ -1,4 +1,6 @@
 import React from "react";
+import { Router } from "react-router-dom";
+import { createMemoryHistory } from "history";
 import {
   render,
   RenderResult,
@@ -20,12 +22,18 @@ type SutTypes = {
 type SutParams = {
   validationError: string;
 };
+
+const history = createMemoryHistory();
+console.log(history);
+
 const makeSut = (params?: SutParams): SutTypes => {
   const validationStub = new ValidationStub();
   const authenticationSpy = new AuthenticationSpy();
   validationStub.errorMessage = params?.validationError;
   const sut = render(
-    <Login validation={validationStub} authentication={authenticationSpy} />
+    <Router navigator={history} location="/login">
+      <Login validation={validationStub} authentication={authenticationSpy} />
+    </Router>
   );
   return {
     sut,
@@ -187,9 +195,11 @@ describe("Login Component", () => {
     });
   });
 
-  // test("Should go to signup page", () => {
-  //   const { sut } = makeSut();
-  //   const register = sut.getByTestId("register");
-  //   fireEvent.click(register);
-  // });
+  test("Should go to signup page", () => {
+    const { sut } = makeSut();
+    const register = sut.getByTestId("signup");
+    fireEvent.click(register);
+    // expect(history.length).toBe(2); this part does not work test after
+    expect(history.location.pathname).toBe("/signup");
+  });
 });
