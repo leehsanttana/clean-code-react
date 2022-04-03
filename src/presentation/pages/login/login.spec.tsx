@@ -23,7 +23,7 @@ type SutParams = {
   validationError: string;
 };
 
-const history = createMemoryHistory();
+const history = createMemoryHistory({ initialEntries: ["/login"] });
 console.log(history);
 
 const makeSut = (params?: SutParams): SutTypes => {
@@ -183,7 +183,6 @@ describe("Login Component", () => {
     expect(errorWrap.childElementCount).toBe(1);
   });
 
-  // the test is failure. Need check after
   test("Should add accessToken to Localstorage on success", async () => {
     const { sut, authenticationSpy } = makeSut();
     simulateValidSubmit(sut);
@@ -193,6 +192,8 @@ describe("Login Component", () => {
         authenticationSpy.account.accessToken
       );
     });
+    // expect(history.length).toBe(1); this part does not work test after
+    expect(history.location.pathname).toBe("/");
   });
 
   test("Should go to signup page", () => {
