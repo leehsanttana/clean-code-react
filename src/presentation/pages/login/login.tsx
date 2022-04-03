@@ -9,6 +9,7 @@ import {
 import StateProps from "@/presentation/context/form/form-context";
 import { Validation } from "@/presentation/protocols/validation";
 import { Authentication } from "@/domain/usecases";
+import { Link } from "react-router-dom";
 
 type Props = {
   validation: Validation;
@@ -82,11 +83,13 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
           >
             Entrar
           </button>
+          <Link data-testid="signup" to="/signup">
+            Criar conta
+          </Link>
           <span className={Styles.link}>Criar conta</span>
           <FormStatus />
         </form>
       </StateProps.Provider>
-
       <Footer />
     </div>
   );
