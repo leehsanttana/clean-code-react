@@ -18,7 +18,6 @@ type SutParams = {
 };
 
 const history = createMemoryHistory({ initialEntries: ["/login"] });
-console.log(history);
 
 const makeSut = (params?: SutParams): SutTypes => {
   const validationStub = new ValidationStub();
