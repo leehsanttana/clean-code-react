@@ -18,14 +18,14 @@ describe("ValidationBuilder", () => {
   test("Should return MinLengthValidation", () => {
     const field = faker.database.column();
     const length = faker.random.number();
-    const validations = ValidationBuilder.field(field).min(5).build();
+    const validations = ValidationBuilder.field(field).min(length).build();
     expect(validations).toEqual([new MinLengthValidation(field, length)]);
   });
 
   test("Should return a list of validations", () => {
     const field = faker.database.column();
     const length = faker.random.number();
-    const validations = ValidationBuilder.field(field).required().min(5).email().build();
+    const validations = ValidationBuilder.field(field).required().min(length).email().build();
     expect(validations).toEqual([
       new RequiredFieldValidation(field),
       new MinLengthValidation(field, length),
