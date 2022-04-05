@@ -81,10 +81,10 @@ const testElementExists = (sut: RenderResult, fieldName: string): void => {
   expect(el).toBeTruthy()
 }
 
-const testElementText = (sut: RenderResult, fieldName: string, text: string): void => {
-  const el = sut.getByTestId(fieldName)
-  expect(el.textContent).toBe(text)
-}
+// const testElementText = (sut: RenderResult, fieldName: string, text: string): void => {
+//   const el = sut.getByTestId(fieldName)
+//   expect(el.textContent).toBe(text)
+// }
 
 const testButtonIsDisabled = (sut: RenderResult, fieldName: string, isDisabled: boolean): void => {
   const button = sut.getByTestId(fieldName) as HTMLButtonElement
@@ -179,7 +179,7 @@ describe('Login Component', () => {
   })
 
   test('Should add accessToken to Localstorage on success', async () => {
-    const { sut, authenticationSpy } = makeSut()
+    const { sut } = makeSut()
     await simulateValidSubmit(sut)
     // expect(history.length).toBe(1); this part does not work test after
     expect(history.location.pathname).toBe('/')
