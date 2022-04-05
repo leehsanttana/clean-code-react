@@ -1,7 +1,7 @@
 import {
   RequiredFieldValidation,
   EmailValidation,
-  MinLengthValidation,
+  MinLengthValidation
 } from '@/validation/validators'
 import { ValidationBuilder } from './validation-builder'
 import faker from 'faker'
@@ -33,7 +33,7 @@ describe('ValidationBuilder', () => {
     expect(validations).toEqual([
       new RequiredFieldValidation(field),
       new MinLengthValidation(field, length),
-      new EmailValidation(field),
+      new EmailValidation(field)
     ])
   })
 })

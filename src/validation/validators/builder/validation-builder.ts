@@ -2,7 +2,7 @@ import { FieldValidation } from '@/validation/protocols/field-validation'
 import {
   RequiredFieldValidation,
   EmailValidation,
-  MinLengthValidation,
+  MinLengthValidation
 } from '@/validation/validators'
 
 export class ValidationBuilder {

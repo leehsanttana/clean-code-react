@@ -15,7 +15,7 @@ const makeSut = (): SutTypes => {
   const mockedAxios = mockAxios()
   return {
     sut,
-    mockedAxios,
+    mockedAxios
   }
 }
 
@@ -36,7 +36,7 @@ describe('AxiosHttpClient', () => {
   test('Should return the correct status code and body on failure', () => {
     const { sut, mockedAxios } = makeSut()
     mockedAxios.post.mockRejectedValueOnce({
-      response: mockHttpResponse(),
+      response: mockHttpResponse()
     })
     const promise = sut.post(mockPostRequest())
     expect(promise).toEqual(mockedAxios.post.mock.results[0].value)

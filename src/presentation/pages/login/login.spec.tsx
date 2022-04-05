@@ -30,7 +30,7 @@ const makeSut = (params?: SutParams): SutTypes => {
   )
   return {
     sut,
-    authenticationSpy,
+    authenticationSpy
   }
 }
 
@@ -50,14 +50,14 @@ const simulateValidSubmit = async (
 const populateEmailField = (sut: RenderResult, email = faker.internet.email()): void => {
   const emailInput = sut.getByTestId('email')
   fireEvent.input(emailInput, {
-    target: { value: email },
+    target: { value: email }
   })
 }
 
 const populatePasswordField = (sut: RenderResult, password = faker.internet.password()): void => {
   const passwordInput = sut.getByTestId('password')
   fireEvent.input(passwordInput, {
-    target: { value: password },
+    target: { value: password }
   })
 }
 
@@ -151,7 +151,7 @@ describe('Login Component', () => {
     await simulateValidSubmit(sut, email, password)
     expect(authenticationSpy.params).toEqual({
       email,
-      password,
+      password
     })
   })
 

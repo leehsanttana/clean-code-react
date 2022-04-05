@@ -9,5 +9,5 @@ export {
   ValidationBuilder,
   EmailValidation,
   MinLengthValidation,
-  RequiredFieldValidation,
+  RequiredFieldValidation
 }

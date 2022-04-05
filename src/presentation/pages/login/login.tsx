@@ -17,7 +17,7 @@ const defaultContextState = {
   email: '',
   password: '',
   emailError: '',
-  passwordError: '',
+  passwordError: ''
 }
 
 const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
@@ -28,7 +28,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
     setState({
       ...state,
       emailError: validation.validate('email', state.email),
-      passwordError: validation.validate('password', state.password),
+      passwordError: validation.validate('password', state.password)
     })
   }, [state.email, state.password])
 
@@ -40,11 +40,11 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       }
       setState({
         ...state,
-        isLoading: true,
+        isLoading: true
       })
       const account = await authentication.auth({
         email: state.email,
-        password: state.password,
+        password: state.password
       })
       localStorage.setItem('accessToken', account.accessToken)
       history('/')
@@ -52,7 +52,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       setState({
         ...state,
         isLoading: false,
-        mainError: error.message,
+        mainError: error.message
       })
     }
   }

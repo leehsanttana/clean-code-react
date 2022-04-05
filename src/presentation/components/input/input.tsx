@@ -10,7 +10,7 @@ const Input: React.FC<Props> = (props: Props) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       ...state,
-      [event.target.name]: event.target.value,
+      [event.target.name]: event.target.value
     })
   }
 
