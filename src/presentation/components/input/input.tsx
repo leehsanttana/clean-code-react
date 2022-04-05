@@ -1,26 +1,29 @@
-import React, { useContext } from "react";
-import Styles from "./input-styles.scss";
-import Context from "@/presentation/context/form/form-context";
+import React, { useContext } from 'react'
+import Styles from './input-styles.scss'
+import Context from '@/presentation/context/form/form-context'
 
-type Props = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+type Props = {
+  name: string
+}
+
 const Input: React.FC<Props> = (props: Props) => {
-  const { state, setState } = useContext(Context);
-  const error = state[`${props.name}Error`];
+  const { state, setState } = useContext(Context)
+  const error = state[`${props.name}Error`]
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setState({
       ...state,
-      [event.target.name]: event.target.value,
-    });
-  };
+      [event.target.name]: event.target.value
+    })
+  }
 
   const getStatus = (): string => {
-    return error ? "🔴" : "🟢";
-  };
+    return error ? '🔴' : '🟢'
+  }
 
   const getTitle = (): string => {
-    return error || "Tudo certo!";
-  };
+    return error || 'Tudo certo!'
+  }
   return (
     <div className={Styles.inputWrap}>
       <input {...props} data-testid={props.name} onChange={handleChange} />
@@ -28,7 +31,7 @@ const Input: React.FC<Props> = (props: Props) => {
         {getStatus()}
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
