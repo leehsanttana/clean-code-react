@@ -1,4 +1,4 @@
-import { ValidationStub } from './mock-validation';
-import { AuthenticationSpy } from './mock-authentication';
+import { ValidationStub } from './mock-validation'
+import { AuthenticationSpy } from './mock-authentication'
 
-export { ValidationStub, AuthenticationSpy };
+export { ValidationStub, AuthenticationSpy }

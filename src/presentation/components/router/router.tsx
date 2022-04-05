@@ -1,9 +1,9 @@
-import React, { ReactElement } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import React, { ReactElement } from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 type Props = {
-  makeLogin: ReactElement;
-};
+  makeLogin: ReactElement
+}
 
 const Router: React.FC<Props> = ({ makeLogin }: Props) => {
   return (
@@ -12,7 +12,7 @@ const Router: React.FC<Props> = ({ makeLogin }: Props) => {
         <Route path="/login" element={makeLogin} />
       </Routes>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default Router;
+export default Router
