@@ -1,2 +1,2 @@
-import { FieldValidationSpy } from "./mock-field-validation";
+import { FieldValidationSpy } from './mock-field-validation';
 export { FieldValidationSpy };

@@ -1,5 +1,5 @@
-import React, { ReactElement } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { ReactElement } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 type Props = {
   makeLogin: ReactElement;
